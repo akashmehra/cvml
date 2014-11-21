@@ -8,7 +8,9 @@ datadir = os.path.join(curdir,'data')
 
 def _read_header(filename, fmt, numBytes):
 	f = gzip.GzipFile(filename,'rb')
-	return struct.unpack(fmt,f.read(numBytes)),f.read()
+	buff = f.read()
+	f.close()
+	return struct.unpack(fmt,f.read(numBytes)),
 
 def _labels_datatype():
 	return np.dtype('>b')
