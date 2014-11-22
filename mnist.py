@@ -3,8 +3,7 @@ import struct, gzip, os, sys
 from collections import namedtuple
 
 data = namedtuple('data',['X','Y'])
-curdir = os.path.dirname(__file__)
-datadir = os.path.join(curdir,'data')
+datadir = os.path.join(os.path.dirname(__file__),'data')
 
 def _read_header(filename, fmt, numBytes):
 	f = gzip.GzipFile(filename,'rb')
