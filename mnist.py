@@ -7,9 +7,10 @@ datadir = os.path.join(os.path.dirname(__file__),'data')
 
 def _read_header(filename, fmt, numBytes):
 	f = gzip.GzipFile(filename,'rb')
+	header = struct.unpack(fmt,f.read(numBytes)),
 	buff = f.read()
 	f.close()
-	return struct.unpack(fmt,f.read(numBytes)),
+	return header,buff
 
 def _labels_datatype():
 	return np.dtype('>b')
